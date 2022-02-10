@@ -1,5 +1,5 @@
 
-# SECURITY GROUP  SECURITY GROUP  SECURITY GROUP  SECURITY GROUP  SECURITY GROUP  SECURITY GROUP  SECURITY GROUP  
+# SECURITY GROUP
 resource "aws_security_group" "allow_http" {
   name        = "allow_http"
   description = "Allow HTTP inbound connections"
@@ -35,7 +35,7 @@ resource "aws_security_group" "allow_http" {
 }
 
 
-# SEC.GROUPT ELB  SEC.GROUPT ELB  SEC.GROUPT ELB  SEC.GROUPT ELB  SEC.GROUPT ELB  SEC.GROUPT ELB  SEC.GROUPT ELB  
+# SEC.GROUPT ELB
 resource "aws_security_group" "elb_http" {
   name        = "elb_http"
   description = "Allow HTTP traffic to instances through Elastic Load Balancer"

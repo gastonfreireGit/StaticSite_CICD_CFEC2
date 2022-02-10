@@ -28,7 +28,7 @@ module "s3_module" {
 }
 
 module "ec2_module" {
-  source  = "../../modules/ec2-module"
+  source = "../../modules/ec2-module"
 }
 
 module "cf_module" {
@@ -53,7 +53,7 @@ module "cp_module" {
 }
 
 module "cd_module" {
-  source        = "../../modules/cd-module"
+  source    = "../../modules/cd-module"
   createdby = var.createdby
   project   = var.project
 }

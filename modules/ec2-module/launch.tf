@@ -6,7 +6,6 @@ resource "aws_launch_configuration" "web" {
   instance_type = "t2.micro"
   key_name = "staticsite-gf-kp"
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
-  #aws_iam_instance_profile.ec2_profile.name
 
   security_groups             = [aws_security_group.allow_http.id]
   associate_public_ip_address = true

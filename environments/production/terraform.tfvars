@@ -24,3 +24,7 @@ iam_name = "role-staticsite-gf-prod"
 # CodePipeline
 ####################
 cf_comment = "StaticSite-GF-CF-Prod"
+
+##############################
+# Autoscaling Group
+##############################
