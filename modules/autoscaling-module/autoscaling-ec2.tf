@@ -1,25 +1,6 @@
-/* terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-    default_tags {
-    tags = {
-      createdby = "gastonFreire"
-      project   = "training"
-    }
-  }
-} */
-
 # AUTOSCALING GROUP  AUTOSCALING GROUP  AUTOSCALING GROUP  AUTOSCALING GROUP  AUTOSCALING GROUP  AUTOSCALING GROUP  AUTOSCALING GROUP
 resource "aws_autoscaling_group" "web" {
-  name = "${aws_launch_configuration.web.name}-asg-gf"
+  name = var.autoscaling_name
 
   min_size             = 1
   desired_capacity     = 1
@@ -64,12 +45,17 @@ resource "aws_autoscaling_group" "web" {
         "value"               = "training"
         "propagate_at_launch" = true
       },
+      {
+        "key"                 = "environment"
+        "value"               = var.ec2_tag_environment
+        "propagate_at_launch" = true
+      },
     ],
     )
 }
 # AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  
 resource "aws_autoscaling_policy" "web_policy_up" {
-  name = "web_policy_up"
+  name = var.autoscaling_policy_up
   scaling_adjustment = 1
   adjustment_type = "ChangeInCapacity"
   cooldown = 120
@@ -78,7 +64,7 @@ resource "aws_autoscaling_policy" "web_policy_up" {
 
 # AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  
 resource "aws_autoscaling_policy" "web_policy_down" {
-  name = "web_policy_down"
+  name = var.autoscaling_policy_down
   scaling_adjustment = -1
   adjustment_type = "ChangeInCapacity"
   cooldown = 120

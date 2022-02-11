@@ -23,7 +23,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         ConnectionArn        = "arn:aws:codestar-connections:us-east-1:424819937310:connection/4e3055b6-fd87-4abc-93ea-d67ae7119a65"
-        FullRepositoryId     = "gastonfreire3XM/StaticSite_CICD_CFS3"
+        FullRepositoryId     = "gastonfreire3XM/StaticSite_CICD_CFEC2"
         BranchName           = var.gh-branch
         OutputArtifactFormat = "CODE_ZIP"
       }
@@ -36,8 +36,8 @@ resource "aws_codepipeline" "codepipeline" {
       region = "us-east-1"
       name   = "Deploy"
       configuration = {
-        ApplicationName     = "staticsite-cd-gf"
-        DeploymentGroupName = "staticsite-gf-group"
+        ApplicationName     = var.codedeploy_name
+        DeploymentGroupName = var.deploymentgroup_name
       }
 
       category = "Deploy"

@@ -1,18 +1,5 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_iam_role_policy" "ec2_policy" {
-  name        = "ec2_policy"
+  name        = var.ec2_policy_name
   role        = aws_iam_role.EC2staticsiteGF_role.name
   policy = jsonencode({
 "Version": "2012-10-17",
@@ -30,14 +17,9 @@ resource "aws_iam_role_policy" "ec2_policy" {
   })
 }
 
-resource "aws_iam_role" "EC2staticsiteGF_role" {  
+resource "aws_iam_role" "EC2staticsiteGF_role" {
 
-  name = "EC2staticsiteGF"
-
-  tags = {
-    createdby = "gastonFreire"
-    project = "training"
-}
+  name = var.ec2_role_name
 
   assume_role_policy = <<EOF
 {
@@ -57,6 +39,6 @@ EOF
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name  = "EC2staticsiteGF_profile"
+  name  = var.ec2_profile_name
   role = aws_iam_role.EC2staticsiteGF_role.name
 }

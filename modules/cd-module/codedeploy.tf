@@ -1,10 +1,10 @@
 resource "aws_codedeploy_app" "cd-gf" {
   compute_platform = "Server"
-  name             = "staticsite-cd-gf"
+  name             = var.codedeploy_name
 }
 
 resource "aws_codedeploy_deployment_config" "cd-deployconf-gf" {
-  deployment_config_name = "staticsite-deployment-config-gf"
+  deployment_config_name = var.deploymentgroup_config_name
 
   minimum_healthy_hosts {
     type  = "HOST_COUNT"
@@ -13,7 +13,7 @@ resource "aws_codedeploy_deployment_config" "cd-deployconf-gf" {
 }
 
 resource "aws_iam_role" "rolegfcd" {
-  name = "codeploy-gf-role"
+  name = var.deploymentgroup_role_name
 
   assume_role_policy = <<EOF
 {
@@ -42,14 +42,14 @@ resource "aws_iam_role_policy_attachment" "AWSCodeDeployRole" {
 
 resource "aws_codedeploy_deployment_group" "gf-group" {
   app_name              = aws_codedeploy_app.cd-gf.name
-  deployment_group_name = "staticsite-gf-group"
+  deployment_group_name = var.deploymentgroup_name
   service_role_arn      = aws_iam_role.rolegfcd.arn
 
   ec2_tag_set {
     ec2_tag_filter {
-      key   = "createdby"
+      key   = "environment"
       type  = "KEY_AND_VALUE"
-      value = "gastonFreire"
+      value = var.ec2_tag_environment
     }
   }
 

@@ -1,7 +1,6 @@
-
 # SECURITY GROUP
 resource "aws_security_group" "allow_http" {
-  name        = "allow_http"
+  name        = var.sg_ec2_name
   description = "Allow HTTP inbound connections"
   vpc_id      = aws_vpc.my_vpc.id
   
@@ -37,7 +36,7 @@ resource "aws_security_group" "allow_http" {
 
 # SEC.GROUPT ELB
 resource "aws_security_group" "elb_http" {
-  name        = "elb_http"
+  name        = var.sg_elb_name
   description = "Allow HTTP traffic to instances through Elastic Load Balancer"
   vpc_id      = aws_vpc.my_vpc.id
 

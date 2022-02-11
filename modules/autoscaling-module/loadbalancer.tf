@@ -1,5 +1,5 @@
 resource "aws_elb" "web_elb" {
-  name = "web-elb"
+  name = var.loadbalancer_name
   security_groups = [
     aws_security_group.elb_http.id
   ]
