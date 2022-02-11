@@ -1,1 +1,0 @@
-#s3_name = "staticsite-dev-gf"

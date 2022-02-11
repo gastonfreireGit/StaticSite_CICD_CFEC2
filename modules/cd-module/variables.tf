@@ -1,2 +1,0 @@
-variable "createdby" {}
-variable "project" {}
