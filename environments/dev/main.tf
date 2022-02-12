@@ -25,7 +25,7 @@ provider "aws" {
 module "s3_module" {
   source  = "../../modules/s3-module"
   s3_name = var.s3_name
-} 
+}
 
 module "autoscaling_module" {
   source = "../../modules/autoscaling-module"
@@ -43,6 +43,7 @@ module "autoscaling_module" {
   loadbalancer_name = var.loadbalancer_name
   sg_ec2_name = var.sg_ec2_name
   sg_elb_name = var.sg_elb_name
+
 }
 
 module "cf_module" {
@@ -64,7 +65,7 @@ module "cp_module" {
   codedeploy_name = var.codedeploy_name
   deploymentgroup_name = var.deploymentgroup_name
   depends_on = [
-    module.cf_module
+    module.cd_module
   ]
 }
 
@@ -78,6 +79,6 @@ module "cd_module" {
   deploymentgroup_name = var.deploymentgroup_name
   ec2_tag_environment = var.ec2_tag_environment
     depends_on = [
-    module.cp_module
+    module.cf_module
   ]
 }
