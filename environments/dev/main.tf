@@ -22,10 +22,10 @@ provider "aws" {
   }
 }
 
-/* module "s3_module" {
+module "s3_module" {
   source  = "../../modules/s3-module"
   s3_name = var.s3_name
-} */
+} 
 
 module "autoscaling_module" {
   source = "../../modules/autoscaling-module"

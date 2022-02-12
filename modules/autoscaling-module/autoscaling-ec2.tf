@@ -53,7 +53,7 @@ resource "aws_autoscaling_group" "web" {
     ],
     )
 }
-# AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  AUTO.GROUP POLICY Up  
+# AUTO.GROUP POLICY Up
 resource "aws_autoscaling_policy" "web_policy_up" {
   name = var.autoscaling_policy_up
   scaling_adjustment = 1
@@ -62,7 +62,7 @@ resource "aws_autoscaling_policy" "web_policy_up" {
   autoscaling_group_name = aws_autoscaling_group.web.name
 }
 
-# AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  AUTO.GROUP POLICY Down  
+# AUTO.GROUP POLICY Down
 resource "aws_autoscaling_policy" "web_policy_down" {
   name = var.autoscaling_policy_down
   scaling_adjustment = -1

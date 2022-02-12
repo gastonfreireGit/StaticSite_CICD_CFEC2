@@ -32,7 +32,7 @@ cf_comment = "StaticSite-GF-CF-Dev"
     # Alarm
     ##############################
     cpu_alarm_up = "alarm-up-gf-dev"
-    cpu_alarm_down = "alarm-up-gf-dev"
+    cpu_alarm_down = "alarm-down-gf-dev"
 
     ##############################
     # Autoscaling

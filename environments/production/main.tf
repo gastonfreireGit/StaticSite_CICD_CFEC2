@@ -65,7 +65,7 @@ module "cp_module" {
   codedeploy_name = var.codedeploy_name
   deploymentgroup_name = var.deploymentgroup_name
   depends_on = [
-    module.cf_module
+    module.cd_module
   ]
 }
 
@@ -79,6 +79,6 @@ module "cd_module" {
   deploymentgroup_name = var.deploymentgroup_name
   ec2_tag_environment = var.ec2_tag_environment
     depends_on = [
-    module.cp_module
+    module.cf_module
   ]
 }
