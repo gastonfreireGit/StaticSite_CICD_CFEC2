@@ -13,3 +13,5 @@ variable "deploymentgroup_role_name" {}
 variable "deploymentgroup_name" {}
 
 variable "ec2_tag_environment" {}
+
+variable "autoscaling_id" {}

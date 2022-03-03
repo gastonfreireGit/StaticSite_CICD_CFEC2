@@ -78,6 +78,7 @@ module "cd_module" {
   deploymentgroup_role_name = var.deploymentgroup_role_name
   deploymentgroup_name = var.deploymentgroup_name
   ec2_tag_environment = var.ec2_tag_environment
+  autoscaling_id = module.autoscaling_module.autoscaling_name
     depends_on = [
     module.cp_module
   ]

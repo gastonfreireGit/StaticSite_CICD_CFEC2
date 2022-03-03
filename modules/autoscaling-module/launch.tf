@@ -1,6 +1,6 @@
 # LAUNCH CONFIGURATION  LAUNCH CONFIGURATION  LAUNCH CONFIGURATION  LAUNCH CONFIGURATION  LAUNCH CONFIGURATION  LAUNCH CONFIGURATION  
 resource "aws_launch_configuration" "web" {
-  name_prefix = var.ec2_name
+  name = var.ec2_name
 
   image_id      = "ami-04505e74c0741db8d" #"ami-0947d2ba12ee1ff75" # Amazon Linux 2 AMI (HVM), SSD Volume Type
   instance_type = "t2.micro"

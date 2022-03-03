@@ -44,14 +44,15 @@ resource "aws_codedeploy_deployment_group" "gf-group" {
   app_name              = aws_codedeploy_app.cd-gf.name
   deployment_group_name = var.deploymentgroup_name
   service_role_arn      = aws_iam_role.rolegfcd.arn
+  autoscaling_groups    = [ var.autoscaling_id ]
 
-  ec2_tag_set {
+/*   ec2_tag_set {
     ec2_tag_filter {
       key   = "environment"
       type  = "KEY_AND_VALUE"
       value = var.ec2_tag_environment
     }
-  }
+  } */
 
   auto_rollback_configuration {
     enabled = true
